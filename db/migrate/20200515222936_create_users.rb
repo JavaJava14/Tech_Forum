@@ -1,8 +1,8 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
-
-      t.timestamps null: false
+      t.string :username
+      t.string :password
     end
   end
 end
