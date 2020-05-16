@@ -5,6 +5,26 @@ class CategoriesController < ApplicationController
     erb :"/categories/index.html"
   end
 
+  get "/categories/motherboard" do
+    
+  end
+
+  get "/categories/cpu" do
+    
+  end
+
+  get "/categories/memory" do
+    
+  end
+
+  get "/categories/storage" do
+    
+  end
+
+  get "/categories/graphic_card" do
+    
+  end
+
   # GET: /categories/new
   get "/categories/new" do
     erb :"/categories/new.html"
