@@ -1,13 +1,5 @@
 class UsersController < ApplicationController
 
-  get '/home' do
-    if logged_in?
-      erb :home
-    else
-      redirect '/login'
-    end
-  end
-
   get '/register' do
     if logged_in?
       redirect '/home'

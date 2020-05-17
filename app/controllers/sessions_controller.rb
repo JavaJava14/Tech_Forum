@@ -1,5 +1,13 @@
 class SessionsController < ApplicationController
 
+  get '/home' do
+    if logged_in?
+      erb :home
+    else
+      redirect '/login'
+    end
+  end
+
   get '/login' do
     if logged_in?
       redirect '/home'
@@ -14,6 +22,7 @@ class SessionsController < ApplicationController
       erb :'/users/login.html'
     else
       if user = User.find_by(username: params[:username] ,password: params[:password]) 
+      session[:user_id] = user.id
       redirect '/home'
       else
       @error = "Account not found"
