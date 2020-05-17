@@ -1,37 +1,29 @@
 class SessionsController < ApplicationController
 
-  # GET: /sessions
-  get "/sessions" do
-    erb :"/sessions/index.html"
+  get '/login' do
+    if logged_in?
+      redirect '/home'
+    else
+      erb :'/users/login.html'
+    end
   end
 
-  # GET: /sessions/new
-  get "/sessions/new" do
-    erb :"/sessions/new.html"
+  post '/login' do 
+    if params[:username].empty? || params[:password].empty?
+      @error = "Please fill in Username and password"
+      erb :'/users/login.html'
+    else
+      if user = User.find_by(username: params[:username] ,password: params[:password]) 
+      redirect '/home'
+      else
+      @error = "Account not found"
+      erb :'/users/login.html'
+      end
+    end
   end
 
-  # POST: /sessions
-  post "/sessions" do
-    redirect "/sessions"
-  end
-
-  # GET: /sessions/5
-  get "/sessions/:id" do
-    erb :"/sessions/show.html"
-  end
-
-  # GET: /sessions/5/edit
-  get "/sessions/:id/edit" do
-    erb :"/sessions/edit.html"
-  end
-
-  # PATCH: /sessions/5
-  patch "/sessions/:id" do
-    redirect "/sessions/:id"
-  end
-
-  # DELETE: /sessions/5/delete
-  delete "/sessions/:id/delete" do
-    redirect "/sessions"
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 end
