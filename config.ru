@@ -5,7 +5,6 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 use UsersController
-use CategoriesController
+use ForumsController
 use SessionsController
-use SolutionsController
 run ApplicationController
