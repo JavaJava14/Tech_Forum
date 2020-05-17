@@ -1,37 +1,28 @@
 class UsersController < ApplicationController
 
-  # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
+  get '/home' do
+    erb :home
   end
 
-  # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
+  get '/register' do
+    if logged_in?
+      redirect '/home'
+    else
+      erb :'/users/register.html'
+    end
   end
 
-  # POST: /users
-  post "/users" do
-    redirect "/users"
-  end
-
-  # GET: /users/5
-  get "/users/:id" do
-    erb :"/users/show.html"
-  end
-
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
-
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
-
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
+  post '/register' do
+    user = User.new(params)
+    if user.save
+      session[:user_id] = user.id
+      redirect '/home'
+    elsif User.find_by(username: user.username)
+      @error = "Account with that username already exists"
+      erb :'/users/register.html'
+    else
+      @error = "Please fill out every field below"
+      erb :'/users/register.html'
+    end
   end
 end
