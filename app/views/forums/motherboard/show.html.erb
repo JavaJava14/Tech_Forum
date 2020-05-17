@@ -3,7 +3,13 @@
 		<title>User Guide</title>
 	</head>
 	<body>
+		<form action = "/forums/motherboard/<%= @guide.id %>" method = "post">
+			<input type = "hidden" name = "_method" value = "delete">
 			<h1><%= @guide.title %></h1>
 			<h1><%= @guide.comment %></h1>
+			<% if current_user == @guide.user%>
+			<input type = "submit" value="Delete">
+			<% end %>
+		</form>
   	<body>
 </html>

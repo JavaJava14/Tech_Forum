@@ -83,4 +83,10 @@ class ForumsController < ApplicationController
       erb :'forums/motherboard/edit.html'
     end
   end
+
+  delete '/forums/motherboard/:id' do
+    @guide = Forum.find(params[:id])
+    @guide.destroy
+    redirect '/forums/motherboard'
+  end
 end
