@@ -1,3 +1,27 @@
+<style>
+  .input{
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    width: 40%;
+    padding: 6px;
+    color: #161717;
+  }
+  .submit{
+    min-width: 120px;
+    cursor: pointer;
+    border-radius: 17px;
+    height: 34px;
+    color: #fff;
+    background: #55d0ff;
+    border: none;
+    font-size: 14px;
+  }
+  .body {
+			background-color: #ffffff;
+        }
+</style>
+<body class = "body">
 <p><%= @error %></p>
 <form action="/register" method="POST"><br/>
   <% if @error %>
@@ -5,15 +29,16 @@
   <% else %>
   <div>username:</div>
   <% end %>
-  <input type = "text" name = "username">
+  <input class = "input" type = "text" name = "username">
   <br/><br/>
   <% if @error %>
   <div>* password</div>
   <% else %>
   <div>password:</div>
   <% end %>
-  <input type = "text" name = "password">
+  <input class = "input" type = "text" name = "password">
   <br/>
   <br/>
-  <input type = "submit" value = "Create Account">
+  <input class = "submit" type = "submit" value = "Create Account">
 </form>
+</body>

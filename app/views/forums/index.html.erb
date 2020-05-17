@@ -1,20 +1,23 @@
-<head>
-	<h1>This is the Model's index page.</h1>
-</head>
-	<style> 
-        #UND { 
-            text-decoration: none; 
-        }
-		div.big {
-			line-height: 2.5;
-		}
-    </style>
-<body>
+
+<style> 
+  #UND { 
+		text-decoration: none; 
+  }
+	div.big {
+		line-height: 2.5;
+		font-size: 2.0rem;
+	}
+	.body {
+		background-color: #ffffff;
+	}
+
+</style>
+<body class = "body">
 	<div>
 		<p hidden><%= computer = "/forums/computer" %> </p>
 	</div>
 	<div class="big">
-		<a id = "UND" href= <%=computer%>>Computer</a>
+		<a id = "UND" href= <%=computer%>>Computer - Post your guides</a>
   </div>
 </body>
 

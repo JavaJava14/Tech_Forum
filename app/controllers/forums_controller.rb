@@ -11,7 +11,7 @@ class ForumsController < ApplicationController
   post "/forums/computer" do
     @guide = current_user.forums.build(params)
     #@guide = Forum.new(params)
-    if !params[:title].empty?
+    if !params[:title].empty? && !params[:comment].empty?
       @guide.save
       redirect "/forums/computer"
     else
@@ -25,7 +25,7 @@ class ForumsController < ApplicationController
     if logged_in?
       erb :"/forums/index.html"
     else
-      redirect '/error'
+      redirect '/login'
     end
   end
 
@@ -36,10 +36,6 @@ class ForumsController < ApplicationController
     else
       redirect '/login'
     end
-  end
-
-  get "/forums/:id" do
-    erb :"/forums/show.html"
   end
 
   get "/forums/computer/:id" do
@@ -58,7 +54,7 @@ class ForumsController < ApplicationController
 
   patch '/forums/computer/:id' do
     @guide = Forum.find(params[:id])
-    if params[:guide][:title] != ""
+    if params[:guide][:title] != "" && params[:guide][:comment] != ""
       @guide.update(params[:guide])
       redirect "/forums/computer"
     else

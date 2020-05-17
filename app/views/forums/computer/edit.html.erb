@@ -1,9 +1,20 @@
-<h1>Edit for <%= @guide.title %></h1>
+<style>
+    .body {
+			background-color: #ffffff;
+    }
+    .div{
+      font-size: 2.0rem;
+    }
+</style>
+<h1>Edit |  <%= @guide.title %></h1>
 <p><%= @error %></p>
+<body class = "body">
 <form action="/forums/computer/<%=@guide.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <input  type="text" name="guide[title]" value = "<%= @guide.title %>"/>
-  <input  type="text" name="guide[comment]" value = "<%= @guide.comment %>"/> 
+  <input  type="text" name="guide[title]" value = "<%= @guide.title %>"/><br>
+  <br/>
+  <textarea name = "guide[comment]" value = "<%= @guide.comment %>" rows = "5" cols = "50" placeholder = "Describe your guide"></textarea> 
   <input type="submit" value="Post">
 </form>
+</body>
 

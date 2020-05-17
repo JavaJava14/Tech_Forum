@@ -1,12 +1,20 @@
+<style>
+	.body {
+		background-color: #ffffff;
+  }
+  .div{
+    font-size: 2.0rem;
+  }
+</style>
 <html>
 	<head>
 		<title>User Guide</title>
 	</head>
-	<body>
+	<body class = "body">
 		<form action = "/forums/computer/<%= @guide.id %>" method = "post">
 			<input type = "hidden" name = "_method" value = "delete">
 			<h1><%= @guide.title %></h1>
-			<h1><%= @guide.comment %></h1>
+			<p><%= @guide.comment %></p>
 			<% if current_user == @guide.user%>
 			<input type = "submit" value="Delete">
 			<% end %>

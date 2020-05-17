@@ -1,10 +1,19 @@
+<style>
+  .body {
+	  background-color: #ffffff;
+  }
+  .div{
+    font-size: 2.0rem;
+  }
+</style>
 <html>
   <head>
     <title>Post How To</title>
   </head>
-  <body>
+  <body class = "body">
+    <%=@error%>
     <form action="/forums/computer" method="POST">
-      <input  type="text" name="title" placeholder = "Title"> 
+      <input  type="text" name="title" placeholder = "Title"><br>
       <br/>
       <textarea name = "comment" rows = "5" cols = "50" placeholder = "Describe your guide"></textarea> 
       <input type = "submit" value="Post">

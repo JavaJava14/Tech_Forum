@@ -3,6 +3,37 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<style>
+  .bar{
+  margin-left: auto;
+  text-align: right;
+  align-items: center;
+  padding-right: 10px;
+  padding-top: 10px;
+  font-size: 2.0rem;
+  text-decoration: none;
+}
+.barlink{
+  padding: 15px;
+}
+.user{
+  align-items: center;
+  text-align: center;
+  font-size: 2.0rem;
+}
+.logout{
+  margin-left: auto;
+  text-align: right;
+  align-items: center;
+  padding-top: 8px;
+  padding-right: 8px;
+  font-size: 2.0rem;
+  text-decoration: none;
+}
+#UND { 
+      text-decoration: none; 
+    }
+</style>
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -10,19 +41,25 @@
     <title>TechForum</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
   <div>
     <% if logged_in? %>
-      <div><a href="/logout">Log Out</a></div>
-      <div><a href="/forums">Forums</a></div>
+      <ul class = "bar">
+        <a  id = "UND" href="/logout">Log Out</a>
+      </ul>
+      <ul class = "user" >
+        <a ID = "UND" href="/home">Home</a>
+        <a ID = "UND" href="/forums">Forums</a>
+      </ul>
     <% else %>
-      <div><a href="/login">Log in</a></div>
-      <div><a href="/register">Register</a></div>
+    <ul class = "bar">
+      <a class = "barlink" id = "UND" href="/login">Log in</a>
+     <a id = "UND"  href="/register">Register</a> 
+      </ul>
     <% end %> 
-    <div><a href="/home">Home</a></div>
   </div>
     <div class="wrapper">
 

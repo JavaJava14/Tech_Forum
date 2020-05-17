@@ -1,10 +1,20 @@
 
 <style> 
-        #inline { 
-            display:inline-block; 
-        }
+    #inline { 
+        display:inline-block; 
+    }
+    .body {
+        background-color: #ffffff;
+    }
+    .div{
+        font-size: 2.0rem;
+    }
 </style>
+<body class = "body">
+<div class = "div">
 <a href = "/forums/computer/new">Post How To</a>
+</div>
+<br/>
 <% @guide.each do |guide| %>
 	<div>
 		<p id = "inline">How To |</p>
@@ -14,6 +24,7 @@
       <% end %>
 	</div>
 <% end %>
-
+</div>
+</body>
 
 
