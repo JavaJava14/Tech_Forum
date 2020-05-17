@@ -9,6 +9,9 @@
 	<div>
 		<p id = "inline">How To |</p>
 		<a id = "inline" href= "/forums/motherboard/<%= guide.id %>"><p><%= guide.title %></p></a>
+		<% if current_user == guide.user%>
+      <a href= "/forums/motherboard/<%= guide.id %>/edit">Edit</a>
+      <% end %>
 	</div>
 <% end %>
 

@@ -9,7 +9,8 @@ class ForumsController < ApplicationController
   end
 
   post "/forums/motherboard" do
-    @guide = Forum.new(params)
+    @guide = current_user.forums.build(params)
+    #@guide = Forum.new(params)
     if !params[:title].empty?
       @guide.save
       redirect "/forums/motherboard"
@@ -24,7 +25,7 @@ class ForumsController < ApplicationController
     if logged_in?
       erb :"/forums/index.html"
     else
-      redirect '/login'
+      redirect '/error'
     end
   end
 
@@ -67,4 +68,19 @@ class ForumsController < ApplicationController
     end
   end
 
+  get "/forums/motherboard/:id/edit" do 
+    @guide = Forum.find(params[:id])
+    erb :'/forums/motherboard/edit.html'
+  end
+
+  patch '/forums/motherboard/:id' do
+    @guide = Forum.find(params[:id])
+    if params[:guide][:title] != ""
+      @guide.update(params[:guide])
+      redirect "/forums/motherboard"
+    else
+      @error = "Please submit title and comment."
+      erb :'forums/motherboard/edit.html'
+    end
+  end
 end

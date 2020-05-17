@@ -1,0 +1,9 @@
+<h1>Edit for <%= @guide.title %></h1>
+<p><%= @error %></p>
+<form action="/forums/motherboard/<%=@guide.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input  type="text" name="guide[title]" value = "<%= @guide.title %>"/>
+  <input  type="text" name="guide[comment]" value = "<%= @guide.comment %>"/> 
+  <input type="submit" value="Post">
+</form>
+
