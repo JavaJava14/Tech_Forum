@@ -4,13 +4,13 @@
             display:inline-block; 
         }
 </style>
-<a href = "/forums/motherboard/new">Post How To</a>
+<a href = "/forums/computer/new">Post How To</a>
 <% @guide.each do |guide| %>
 	<div>
 		<p id = "inline">How To |</p>
-		<a id = "inline" href= "/forums/motherboard/<%= guide.id %>"><p><%= guide.title %></p></a>
+		<a id = "inline" href= "/forums/computer/<%= guide.id %>"><p><%= guide.title %></p></a>
 		<% if current_user == guide.user%>
-      <a href= "/forums/motherboard/<%= guide.id %>/edit">Edit</a>
+      <a href= "/forums/computer/<%= guide.id %>/edit">Edit</a>
       <% end %>
 	</div>
 <% end %>

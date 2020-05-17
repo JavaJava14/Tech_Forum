@@ -1,22 +1,22 @@
 class ForumsController < ApplicationController
 
-  get "/forums/motherboard/new" do 
+  get "/forums/computer/new" do 
     if logged_in?
-      erb :"/forums/motherboard/new.html"
+      erb :"/forums/computer/new.html"
     else
       redirect '/login'
     end
   end
 
-  post "/forums/motherboard" do
+  post "/forums/computer" do
     @guide = current_user.forums.build(params)
     #@guide = Forum.new(params)
     if !params[:title].empty?
       @guide.save
-      redirect "/forums/motherboard"
+      redirect "/forums/computer"
     else
       @error = "Please submit title and comment."
-      erb :'forums/motherboard/new.html'
+      erb :'forums/computer/new.html'
     end
   end
 
@@ -29,64 +29,47 @@ class ForumsController < ApplicationController
     end
   end
 
-  get "/forums/motherboard" do
+  get "/forums/computer" do
     if logged_in?
       @guide = Forum.all
-      erb :"/forums/motherboard/index.html"
+      erb :"/forums/computer/index.html"
     else
       redirect '/login'
     end
   end
-  
-  get "/forums/cpu" do
-    erb :"/forums/cpu/index.html"
-  end
 
-  get "/forums/memory" do
-    erb :"/forums/memory/index.html"
-  end
-
-  get "/forums/storage" do
-    erb :"/forums/storage/index.html"
-  end
-
-  get "/forums/graphic_card" do
-    erb :"/forums/graphic_card/index.html"
-  end
-
-  # GET: /forums/5
   get "/forums/:id" do
     erb :"/forums/show.html"
   end
 
-  get "/forums/motherboard/:id" do
+  get "/forums/computer/:id" do
     if logged_in?
       @guide = Forum.find(params[:id])
-      erb :"/forums/motherboard/show.html"
+      erb :"/forums/computer/show.html"
     else
       redirect '/login'
     end
   end
 
-  get "/forums/motherboard/:id/edit" do 
+  get "/forums/computer/:id/edit" do 
     @guide = Forum.find(params[:id])
-    erb :'/forums/motherboard/edit.html'
+    erb :'/forums/computer/edit.html'
   end
 
-  patch '/forums/motherboard/:id' do
+  patch '/forums/computer/:id' do
     @guide = Forum.find(params[:id])
     if params[:guide][:title] != ""
       @guide.update(params[:guide])
-      redirect "/forums/motherboard"
+      redirect "/forums/computer"
     else
       @error = "Please submit title and comment."
-      erb :'forums/motherboard/edit.html'
+      erb :'forums/computer/edit.html'
     end
   end
 
-  delete '/forums/motherboard/:id' do
+  delete '/forums/computer/:id' do
     @guide = Forum.find(params[:id])
     @guide.destroy
-    redirect '/forums/motherboard'
+    redirect '/forums/computer'
   end
 end
