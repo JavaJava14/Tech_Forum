@@ -1,23 +1,40 @@
 class ForumsController < ApplicationController
 
   get "/forums/motherboard/new" do 
-    erb :"/forums/motherboard/new.html"
+    if logged_in?
+      erb :"/forums/motherboard/new.html"
+    else
+      redirect '/login'
+    end
   end
 
   post "/forums/motherboard" do
     @guide = Forum.new(params)
-    @guide.save
-    redirect "/forums/motherboard"
+    if !params[:title].empty?
+      @guide.save
+      redirect "/forums/motherboard"
+    else
+      @error = "Please submit title and comment."
+      erb :'forums/motherboard/new.html'
+    end
   end
 
   # GET: /forums
   get "/forums" do
-    erb :"/forums/index.html"
+    if logged_in?
+      erb :"/forums/index.html"
+    else
+      redirect '/login'
+    end
   end
 
   get "/forums/motherboard" do
-    @guide = Forum.all
-    erb :"/forums/motherboard/index.html"
+    if logged_in?
+      @guide = Forum.all
+      erb :"/forums/motherboard/index.html"
+    else
+      redirect '/login'
+    end
   end
   
   get "/forums/cpu" do
@@ -42,8 +59,12 @@ class ForumsController < ApplicationController
   end
 
   get "/forums/motherboard/:id" do
-    @guide = Forum.find(params[:id])
-    erb :"/forums/motherboard/show.html"
+    if logged_in?
+      @guide = Forum.find(params[:id])
+      erb :"/forums/motherboard/show.html"
+    else
+      redirect '/login'
+    end
   end
 
 end
