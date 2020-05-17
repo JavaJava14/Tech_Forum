@@ -1,12 +1,12 @@
 class ForumsController < ApplicationController
 
-  get "/forums/motherboard/new_issue" do 
-    erb :"/forums/motherboard/new_issue.html"
+  get "/forums/motherboard/new" do 
+    erb :"/forums/motherboard/new.html"
   end
 
   post "/forums/motherboard" do
-    @motherboard = Forum.new(params)
-    @motherboard.save
+    @guide = Forum.new(params)
+    @guide.save
     redirect "/forums/motherboard"
   end
 
@@ -16,10 +16,10 @@ class ForumsController < ApplicationController
   end
 
   get "/forums/motherboard" do
-    @motherboard = Forum.all
+    @guide = Forum.all
     erb :"/forums/motherboard/index.html"
   end
-
+  
   get "/forums/cpu" do
     erb :"/forums/cpu/index.html"
   end
@@ -42,7 +42,7 @@ class ForumsController < ApplicationController
   end
 
   get "/forums/motherboard/:id" do
-    @motherboard = Forum.find(params[:id])
+    @guide = Forum.find(params[:id])
     erb :"/forums/motherboard/show.html"
   end
 
