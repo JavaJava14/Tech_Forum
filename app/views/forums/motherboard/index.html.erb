@@ -1,0 +1,12 @@
+<style> 
+        #inline { 
+            display:inline-block; 
+        }
+</style>
+<a href = "/forums/motherboard/new_issue">Post Issue</a>
+<% @motherboard.each do |motherboard| %>
+	<div>
+		<p id = "inline">Question |</p>
+		<a id = "inline" href= "/forums/motherboard/<%= motherboard.id %>"><p><%= motherboard.title %></p></a>
+	</div>
+<% end %>

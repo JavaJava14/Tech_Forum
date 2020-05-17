@@ -5,6 +5,8 @@ class ForumsController < ApplicationController
   end
 
   post "/forums/motherboard" do
+    @motherboard = Forum.new(params)
+    @motherboard.save
     redirect "/forums/motherboard"
   end
 
@@ -14,6 +16,7 @@ class ForumsController < ApplicationController
   end
 
   get "/forums/motherboard" do
+    @motherboard = Forum.all
     erb :"/forums/motherboard/index.html"
   end
 
@@ -39,6 +42,7 @@ class ForumsController < ApplicationController
   end
 
   get "/forums/motherboard/:id" do
+    @motherboard = Forum.find(params[:id])
     erb :"/forums/motherboard/show.html"
   end
 
